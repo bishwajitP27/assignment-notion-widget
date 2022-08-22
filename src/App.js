@@ -1,5 +1,5 @@
 import React from "react";
-import ShareWidget from "./components/ShareWidget";
+import ShareWidget from "./layout/ShareWidget";
 import "./App.css";
 
 function App() {

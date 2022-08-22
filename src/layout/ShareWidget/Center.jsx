@@ -1,13 +1,47 @@
-import { useState } from "react";
+import { func } from "prop-types";
+import { useEffect, useRef, useState } from "react";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 export default function Center({ workspaceMembers }) {
-  const [enableInvite, setEnableInvite] = useState(false);
+  const emailInviteRef = useRef(null);
+  const [emailInvite, setEmailInvite] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+
+  const emailInviteHandler = () => {
+    const fieldValue = emailInviteRef.current.value;
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (!fieldValue.match(emailRegex)) setEmailError("Enter Valid Email");
+  };
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setEmailError(null);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [emailError]);
+
   return (
     <div className="widget-center flex flex-column">
       <section className="widget-input--group flex">
-        <input type="text" id="widget-input" className="widget-input" placeholder="People, emails, groups" />
-        <button className="widget-invite--btn">Invite</button>
+        <Input
+          reference={emailInviteRef}
+          type="email"
+          blurHandler={emailInviteHandler}
+          required
+          id="widget-input"
+          className="widget-input"
+          placeholder="People, emails, groups"
+        />
+        <Button className="widget-invite--btn" clickHandler={emailInviteHandler}>
+          Invite
+        </Button>
       </section>
+      {emailError && <p>{emailError}</p>}
       <section className="widget-workspace flex">
         <div className="widget-center--left flex">
           <svg className="oshlash-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,5 @@
 import { IoMdShare } from "react-icons/io";
+import Button from "../../components/Button";
 import Header from "./Header";
 import Center from "./Center";
 import Footer from "./Footer";
@@ -36,10 +37,10 @@ export default function ShareWidget(props) {
   return (
     <>
       <div className="widget-share">
-        <button className="widget-share--btn flex" tabIndex={1} ref={shareBtnRef} onClick={showWidgetHandler}>
+        <Button className="widget-share--btn flex" tabIndex={1} reference={shareBtnRef} clickHandler={showWidgetHandler}>
           <span>Share</span>
           <IoMdShare className="share-icon" />
-        </button>
+        </Button>
         {showWidget && (
           <div className="widget-container" ref={widgetRef}>
             <Header />

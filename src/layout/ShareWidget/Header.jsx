@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Header() {
+  const [shareToWeb, setShareToWeb] = useState(false);
+
+  const shareToWebHandler = () => {
+    setShareToWeb((prev) => !prev);
+  };
+
   return (
     <div className="widget-header flex">
       <section className="widget-header--left flex">
@@ -21,7 +27,7 @@ export default function Header() {
       </section>
 
       <section className="widget-header--right">
-        <input type="checkbox" id="toggleBtn" />
+        <input type="checkbox" onChange={shareToWebHandler} checked={shareToWeb} id="toggleBtn" />
         <label htmlFor="toggleBtn" className="toggle" tabIndex={1}>
           <div className="slider"></div>
         </label>
