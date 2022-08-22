@@ -12,7 +12,7 @@ export default function Center({ workspaceMembers }) {
     const fieldValue = emailInviteRef.current.value;
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    if (!fieldValue.match(emailRegex)) setEmailError("Enter Valid Email");
+    if (!fieldValue.match(emailRegex)) setEmailError("Enter Valid Email Address");
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function Center({ workspaceMembers }) {
           Invite
         </Button>
       </section>
-      {emailError && <p>{emailError}</p>}
+      {emailError && <p className="email-error">{emailError}</p>}
       <section className="widget-workspace flex">
         <div className="widget-center--left flex">
           <svg className="oshlash-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -97,6 +97,14 @@
   border-radius: 0.375rem 0 0 0.375rem;
 }
 
+.email-error {
+  color: red !important;
+  height: auto;
+  width: fit-content;
+  padding: 5px;
+  align-self: center;
+}
+
 .widget-input:focus {
   border: none;
   outline: none;
